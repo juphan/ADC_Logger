@@ -16,12 +16,11 @@ namespace ADC_Logger
     public partial class Form1 : Form
     {
         string path = null;
-        string filePath = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DataSync\\";
+        string filePath = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\DataSync\\"; // Make sure you have a "DataSync" folder on Desktop
 
         StreamWriter sw;
         string buffer = null;
         bool isLogging = false;
-        bool isTimeStamped = true;
         double time = 0;
         double timeInterval;
 
@@ -63,15 +62,8 @@ namespace ADC_Logger
         private void DataReceived(object sender, SerialDataReceivedEventArgs e){
             if (isLogging){
                 try{
-                    if (isTimeStamped){
-                        buffer = time.ToString() + ',' + serialPort1.ReadLine(); // Format incoming data as "time,data\n" in CSV
-                    }
-                    else { 
-                        buffer = serialPort1.ReadLine(); // Format incoming data as "data\n" in CSV
-                    }
-                    
+                    buffer = serialPort1.ReadLine(); // Format incoming data as "data\n" in CSV
                     sw.WriteLine(buffer); // Write to CSV
-                    time += timeInterval; // Update timestamp
                 }catch (Exception ex){
                     MessageBox.Show("ERROR: Issues with reading data from Serial Port!");
                 }
@@ -184,7 +176,6 @@ namespace ADC_Logger
         private void button4_Click(object sender, EventArgs e){
             // Start Logging
             timeInterval = 1.0f / Convert.ToDouble(textBox2.Text);
-            isTimeStamped = checkBox1.Checked; // Checked -> generate timestamps for plots
 
             // Determine the name of the output CSV file
             if (String.IsNullOrEmpty(textBox1.Text)){
@@ -197,6 +188,7 @@ namespace ADC_Logger
             try{
                 sw = new StreamWriter(path);
                 isLogging = true;
+                startTimer();
             }
             catch (Exception ex){
                 MessageBox.Show("ERROR: Unable to write to chosen file location!");
@@ -237,16 +229,23 @@ namespace ADC_Logger
                 dataGridView1.Refresh();
 
                 // Add columns to Data Grid
-                int count = 0;
+                int count = 1; // Extra column for Timestamps
                 foreach (string s1 in line[0].Split(',')) {
                     count++;
                 }
                 dataGridView1.ColumnCount = count;
 
                 // Add rows to Data Grid
+                string entry;
+                time = 0;
+                timeInterval = 1.0f / Convert.ToDouble(textBox2.Text);
                 foreach (string s2 in readFile.Split('\n')) {
                     if (s2 != "") {
-                        dataGridView1.Rows.Add(s2.Split(','));
+                        entry = time.ToString() + ',' + s2; // Row = "Timestamp,data\n"
+                        dataGridView1.Rows.Add(entry.Split(','));
+
+                        time += timeInterval;
+                        entry = "";
                     }
                 }
 

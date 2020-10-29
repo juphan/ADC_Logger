@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,7 +62,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button7 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,7 +73,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.button5);
@@ -87,13 +85,24 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(20, 24);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox1.Size = new System.Drawing.Size(628, 214);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Setup";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(386, 31);
+            this.button2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(108, 51);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Connect";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -109,14 +118,14 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(15, 105);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(259, 26);
+            this.textBox2.Size = new System.Drawing.Size(337, 26);
             this.textBox2.TabIndex = 8;
             this.textBox2.Text = "1000";
             // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(386, 144);
-            this.button5.Margin = new System.Windows.Forms.Padding(1);
+            this.button5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(225, 51);
             this.button5.TabIndex = 7;
@@ -127,7 +136,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(386, 144);
-            this.button4.Margin = new System.Windows.Forms.Padding(1);
+            this.button4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(225, 51);
             this.button4.TabIndex = 6;
@@ -138,24 +147,13 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(503, 31);
-            this.button3.Margin = new System.Windows.Forms.Padding(1);
+            this.button3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 51);
             this.button3.TabIndex = 5;
             this.button3.Text = "Disconnect";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(386, 31);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 51);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Connect";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -170,7 +168,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(15, 169);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(337, 26);
             this.textBox1.TabIndex = 1;
@@ -178,9 +176,9 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(126, 31);
-            this.button1.Margin = new System.Windows.Forms.Padding(1);
+            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 30);
+            this.button1.Size = new System.Drawing.Size(81, 29);
             this.button1.TabIndex = 3;
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
@@ -193,7 +191,7 @@
             "9600",
             "115200"});
             this.comboBox2.Location = new System.Drawing.Point(231, 32);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(1);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 28);
             this.comboBox2.TabIndex = 1;
@@ -203,7 +201,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(15, 32);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(109, 28);
@@ -220,9 +218,9 @@
             this.groupBox2.Controls.Add(this.hours);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox2.Location = new System.Drawing.Point(20, 253);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(1);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox2.Size = new System.Drawing.Size(628, 115);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -297,9 +295,9 @@
             this.groupBox3.Controls.Add(this.chart1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox3.Location = new System.Drawing.Point(664, 24);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(1);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox3.Size = new System.Drawing.Size(473, 344);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -307,43 +305,43 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(14, 31);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "ADC";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "ADC";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(447, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            title4.Alignment = System.Drawing.ContentAlignment.TopCenter;
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            title4.Name = "Title";
-            title4.Text = "ADC Plot";
-            title5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title5.Name = "XLabel";
-            title5.Text = "Time (secs)";
-            title6.Alignment = System.Drawing.ContentAlignment.BottomCenter;
-            title6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title6.DockingOffset = 3;
-            title6.Name = "YLabel";
-            title6.Text = "ADC Readings";
-            title6.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
-            this.chart1.Titles.Add(title4);
-            this.chart1.Titles.Add(title5);
-            this.chart1.Titles.Add(title6);
+            title1.Alignment = System.Drawing.ContentAlignment.TopCenter;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title1.Name = "Title";
+            title1.Text = "ADC Plot";
+            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title2.Name = "XLabel";
+            title2.Text = "Time (secs)";
+            title3.Alignment = System.Drawing.ContentAlignment.BottomCenter;
+            title3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title3.DockingOffset = 3;
+            title3.Name = "YLabel";
+            title3.Text = "ADC Readings";
+            title3.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            this.chart1.Titles.Add(title1);
+            this.chart1.Titles.Add(title2);
+            this.chart1.Titles.Add(title3);
             // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(16, 25);
-            this.button6.Margin = new System.Windows.Forms.Padding(1);
+            this.button6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(97, 34);
             this.button6.TabIndex = 8;
@@ -358,9 +356,9 @@
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.groupBox4.Location = new System.Drawing.Point(20, 386);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(1);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.groupBox4.Size = new System.Drawing.Size(1117, 249);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
@@ -370,7 +368,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(15, 65);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 92;
             this.dataGridView1.RowTemplate.Height = 37;
@@ -380,7 +378,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(126, 25);
-            this.button7.Margin = new System.Windows.Forms.Padding(1);
+            this.button7.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(97, 34);
             this.button7.TabIndex = 9;
@@ -393,30 +391,16 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.InitialDirectory = "C:\\Users\\JLP\\Desktop\\DataSync";
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(278, 73);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(110, 58);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "Generate \r\nTimestamp?";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 644);
+            this.ClientSize = new System.Drawing.Size(1149, 642);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADC Data Logger";
@@ -462,7 +446,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
