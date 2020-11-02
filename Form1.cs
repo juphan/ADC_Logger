@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // StreamWriter
 using System.IO.Ports; // Serial Ports
-using System.Threading;
 
 namespace ADC_Logger
 {
@@ -23,6 +22,8 @@ namespace ADC_Logger
         bool isLogging = false;
         double time = 0;
         double timeInterval;
+
+        List<double> livePlotBuffer;
 
         int _hours = 0;
         int _minutes = 0;
@@ -41,16 +42,27 @@ namespace ADC_Logger
         }
 
         private void Form1_Load(object sender, EventArgs e){
-            // Dummy values to make chart look good at startup
+            // Dummy values to make charts look good at startup
             chart1.Series["ADC"].Points.AddXY(0, 0);
             chart1.Series["ADC"].Points.AddXY(2, 10);
             chart1.Series["ADC"].Points.AddXY(4, 5);
             chart1.Series["ADC"].Points.AddXY(6, 15);
             chart1.Series["ADC"].Points.AddXY(8, 5);
             chart1.Series["ADC"].Points.AddXY(10, 20);
+            chart2.Series["Live ADC"].Points.AddXY(2, 90);
+            chart2.Series["Live ADC"].Points.AddXY(3, 30);
+            chart2.Series["Live ADC"].Points.AddXY(4, 60);
+            chart2.Series["Live ADC"].Points.AddXY(5, 40);
+            chart2.Series["Live ADC"].Points.AddXY(7, 80);
+            chart2.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
 
             // Default time stamps
             timeInterval = 1.0f/Convert.ToDouble(textBox2.Text);
+
+            // Setup Live Plot
+            livePlotBuffer = new List<double>(); // Store incoming data for live plot
+            timer2.Interval = 1; // Plot a point every 1ms
+            timer2.Enabled = false;
         }
 
         void getAvailablePorts(){
@@ -64,8 +76,9 @@ namespace ADC_Logger
                 try{
                     buffer = serialPort1.ReadLine(); // Format incoming data as "data\n" in CSV
                     sw.WriteLine(buffer); // Write to CSV
+                    livePlotBuffer.Add(Convert.ToDouble(buffer.Replace("\n",""))); // Add to Live Plot buffer
                 }catch (Exception ex){
-                    MessageBox.Show("ERROR: Issues with reading data from Serial Port!");
+                    MessageBox.Show("ERROR: Issues with receiving data from Serial Port!");
                 }
             }else{
                 try{
@@ -175,7 +188,11 @@ namespace ADC_Logger
 
         private void button4_Click(object sender, EventArgs e){
             // Start Logging
+            time = 0;
             timeInterval = 1.0f / Convert.ToDouble(textBox2.Text);
+            chart2.Series["Live ADC"].Points.Clear();
+            timer2.Enabled = true;
+            timer2.Start();
 
             // Determine the name of the output CSV file
             if (String.IsNullOrEmpty(textBox1.Text)){
@@ -198,8 +215,6 @@ namespace ADC_Logger
             button4.Visible = false;
             button5.Enabled = true;  // Turn on Stop Logging button
             button5.Visible = true;
-
-            startTimer();
         }
 
         private void button5_Click(object sender, EventArgs e){
@@ -208,11 +223,13 @@ namespace ADC_Logger
             sw.Close();
             timer1.Stop();
             timer1.Enabled = false;
+            timer2.Stop();
+            timer2.Enabled = false;
+            livePlotBuffer.Clear(); // Clear live plot buffer
             button4.Enabled = true;  // Turn off Stop Logging button
             button4.Visible = true;
             button5.Enabled = false; // Turn on Start Logging button
             button5.Visible = false;
-            time = 0;
         }
 
         private void button6_Click(object sender, EventArgs e){
@@ -272,6 +289,13 @@ namespace ADC_Logger
                 c1 = Convert.ToDouble(dataGridView1.Rows[i].Cells[0].Value);
                 c2 = Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value);
                 chart1.Series["ADC"].Points.AddXY(c1, c2);
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e){
+            if (isLogging && livePlotBuffer.Count != 0) {
+                chart2.Series["Live ADC"].Points.AddY(livePlotBuffer[0]);
+                livePlotBuffer.Clear();
             }
         }
 
